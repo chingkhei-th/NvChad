@@ -83,8 +83,15 @@ return {
 				"markdown",
 				"markdown_inline",
 			},
-			highlight = { enable = true },
-			indent = { enable = true },
+			config = function(_, opts)
+				-- Use the correct module path for treesitter config
+				require("custom.configs.treesitter").setup(opts)
+			end,
+			-- highlight = {
+			-- 	enable = true,
+			-- 	additional_vim_regex_highlighting = false,
+			-- },
+			-- indent = { enable = true },
 		},
 	},
 
@@ -115,22 +122,22 @@ return {
 			}
 
 			-- Notifications
-			require("mini.notify").setup {
-				content = {
-					format = function(notif)
-						return notif.msg
-					end,
-				},
-				window = {
-					config = {
-						border = "rounded",
-					},
-					max_width_share = 0.382,
-					winblend = 25,
-				},
-			}
-			-- Override vim.notify with mini.notify
-			vim.notify = require("mini.notify").make_notify()
+			-- require("mini.notify").setup {
+			-- 	content = {
+			-- 		format = function(notif)
+			-- 			return notif.msg
+			-- 		end,
+			-- 	},
+			-- 	window = {
+			-- 		config = {
+			-- 			border = "rounded",
+			-- 		},
+			-- 		max_width_share = 0.382,
+			-- 		winblend = 25,
+			-- 	},
+			-- }
+			-- -- Override vim.notify with mini.notify
+			-- vim.notify = require("mini.notify").make_notify()
 
 			-- Autopairs
 			require("mini.pairs").setup {}
