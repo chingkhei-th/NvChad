@@ -1,5 +1,6 @@
 return {
   "rcarriga/nvim-notify",
+  enabled = false,
   event = "BufReadPre",
   opts = {
     on_open = function(win)
