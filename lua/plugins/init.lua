@@ -140,7 +140,7 @@ return {
 			-- vim.notify = require("mini.notify").make_notify()
 
 			-- Autopairs
-			require("mini.pairs").setup {}
+			-- require("mini.pairs").setup {}
 
 			-- Better text objects
 			require("mini.ai").setup { n_lines = 500 }
