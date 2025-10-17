@@ -27,165 +27,195 @@
 
 local options = {
 
-  base46 = {
-    theme = "tokyodark",
-    hl_add = {
-		Comment = { italic = true },
-		["@comment"] = { italic = true },
+	base46 = {
+		theme = "tokyodark",
+		hl_add = {
+			Comment = { italic = true },
+			["@comment"] = { italic = true },
+		},
+		hl_override = {
+			Comment = { italic = true },
+			["@comment"] = { italic = true },
+		},
+		integrations = {},
+		changed_themes = {},
+		transparency = true,
+		theme_toggle = { "tokyonight", "tokyodark" },
 	},
-    hl_override = {
-		Comment = { italic = true },
-		["@comment"] = { italic = true },
+
+	ui = {
+		cmp = {
+			icons_left = true, -- only for non-atom styles!
+			style = "flat_dark", -- default/flat_light/flat_dark/atom/atom_colored
+			abbr_maxwidth = 30,
+			-- for tailwind, css lsp etc
+			format_colors = { lsp = true, icon = "󱓻" },
+		},
+
+		lsp = {
+			hover = {
+				disabled = true, -- Disables the popups that appear on hover
+			},
+			signature = {
+				enabled = false,
+			},
+		},
+
+		telescope = { style = "borderless" }, -- borderless / bordered
+
+		statusline = {
+			enabled = true,
+			theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
+			-- default/round/block/arrow separators work only for default statusline theme
+			-- round and block will work for minimal theme only
+			separator_style = "default",
+			order = nil,
+			modules = nil,
+		},
+
+		-- lazyload it when there are 1+ buffers
+		tabufline = {
+			enabled = true,
+			lazyload = true,
+			order = { "treeOffset", "buffers", "tabs", "btns" },
+			modules = nil,
+			bufwidth = 21,
+		},
 	},
-    integrations = {},
-    changed_themes = {},
-    transparency = true,
-    theme_toggle = { "tokyonight", "tokyodark" },
-  },
 
-  ui = {
-    cmp = {
-      icons_left = true, -- only for non-atom styles!
-      style = "flat_dark", -- default/flat_light/flat_dark/atom/atom_colored
-      abbr_maxwidth = 60,
-      -- for tailwind, css lsp etc
-      format_colors = { lsp = true, icon = "󱓻" },
-    },
+	-- nvchad dashboard
+	nvdash = {
+		load_on_startup = true,
+		-- header = {
+		--   "                            ",
+		--   "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
+		--   "   ▄▀███▄     ▄██ █████▀    ",
+		--   "   ██▄▀███▄   ███           ",
+		--   "   ███  ▀███▄ ███           ",
+		--   "   ███    ▀██ ███           ",
+		--   "   ███      ▀ ███           ",
+		--   "   ▀██ █████▄▀█▀▄██████▄    ",
+		--   "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
+		--   "                            ",
+		--   "     Powered By  eovim    ",
+		--   "                            ",
+		-- },
+		-- header = {
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⡤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡾⠉⠀⠀⠀⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⣀⠀⠀⠀⠀⠀⠀⣀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⠁⠀⠛⠀⠀⠀⠀⠀⠀⠛⠀⠀⢸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣻⣋⠀⠿⠿⠿⠀⠀⠀⠀⠿⠿⠿⠀⢘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣟⠀⠀⣿⠀⠀⠀⠀⠀⠀⣿⠀⠀⢘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣷⣿⣗⠀⠀⣿⠀⠀⠀⠀⠀⠀⣿⠀⠀⢘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣺⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⣷⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⡿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡺⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣯⣿⡄⠀⠘⠻⠿⠿⠿⠃⠀⣐⣟⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣷⣿⡿⡿⣿⣽⣟⢷⣄⣀⣀⣀⣀⣠⣾⢿⣿⣟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⡿⣻⣿⡿⣿⣯⡯⣿⣿⣶⣷⣾⣾⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣷⣿⣼⣿⣟⣿⣧⣿⣿⣿⣿⣿⣿⣷⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡟⣿⣿⡾⣿⣷⣿⣛⣻⣷⡟⡯⣷⣮⣟⣿⣽⢿⣻⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣯⣟⣟⣛⣞⡻⣿⣿⠽⡼⢟⡷⡗⣿⡎⠿⡿⣽⣏⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣽⡡⡧⢅⢟⢇⡏⢭⠳⡃⣙⢇⣮⡗⡗⡏⠿⣗⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣯⡏⠝⣡⣋⠠⠨⣇⡯⠱⡙⠁⣍⢬⡺⡏⡕⣧⠉⡬⣽⣿⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣃⡂⠃⠘⠀⡏⠡⣎⡁⠂⠀⢼⠄⠂⠀⠃⠛⡁⠉⠁⡿⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠉⠀⠀⠀⠀⠀⠈⠑⡇⠀⠀⠘⠀⠃⠀⠁⣛⠃⠀⠀⠧⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠀⠀⠀⠹⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+		--   "⠀⠀⠀⠀⠀⠀⠀⠀                            ",
+		--   "     𝓬𝓱𝓲𝓷𝓰  𝒗𝒊𝒎    ",
+		--   "                            ",
+		-- },
+		header = {
+			"⠀⠀⠀⠀     ⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢀⡼⠛⣙⠛⠳⢦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀⠀  ⠀  ⠀⠀   ⠀⠀⢀⣀⣀⣰⠋⣰⣿⠿⠿⢷⣦⡈⢻⡀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀    ⠀⠀⠀   ⠀⠀⢀⡎⢠⣦⠀⣴⣿⠃⠀⣶⣦⣤⣁⠀⣇⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀    ⠀⠀ ⠀  ⠀⢀⡾⢀⣿⠃⢰⣿⣿⠀⠀⠙⠿⠿⣿⡧⢸⡇⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀    ⠀⠀ ⠀  ⠀⣼⠀⣼⡏⢀⣿⣿⣿⣷⣤⣀⣀⡀⠀⢀⡼⠃⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀    ⠀⠀ ⠀  ⠀⢿⠐⠿⠀⣼⣿⣿⣿⣿⣿⣿⣿⡿⠀⡾⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀⠀    ⠀ ⠀  ⠀⢈⡷⠀⣶⣿⣿⠛⠿⣿⣿⣿⣿⠃⣸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀⠀    ⠀ ⠀  ⠀⢸⡅⠸⢿⡿⢃⡄⢠⣤⣬⡿⢃⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀    ⠀⠀   ⠀⠀⠀⠉⠳⠤⠴⢿⣄⠻⠿⢋⣠⠏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+			"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⠶⠋⠀⠀⠀⠀⠀⠀⠀⠀",
+			"                            ",
+			"     𝓬𝓱𝓲𝓷𝓰  𝒗𝒊𝒎    ",
+			"                            ",
+		},
 
-    telescope = { style = "borderless" }, -- borderless / bordered
+		buttons = {
+			{
+				txt = "  Find File",
+				keys = "f",
+				cmd = "Telescope find_files",
+			},
+			{
+				txt = "  Recent Files",
+				keys = "r",
+				cmd = "Telescope oldfiles",
+			},
+			{
+				txt = "󰈭  Find Word",
+				keys = "g",
+				cmd = "Telescope live_grep",
+			},
+			{
+				txt = "󱥚  Themes",
+				keys = "t",
+				cmd = ":lua require('nvchad.themes').open()",
+			},
+			{ txt = "  Mappings", keys = "c", cmd = "NvCheatsheet" },
 
-    statusline = {
-      enabled = true,
-      theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
-      -- default/round/block/arrow separators work only for default statusline theme
-      -- round and block will work for minimal theme only
-      separator_style = "default",
-      order = nil,
-      modules = nil,
-    },
+			{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 
-    -- lazyload it when there are 1+ buffers
-    tabufline = {
-      enabled = true,
-      lazyload = true,
-      order = { "treeOffset", "buffers", "tabs", "btns" },
-      modules = nil,
-      bufwidth = 21,
-    },
-  },
+			{
+				txt = function()
+					local stats = require("lazy").stats()
+					local ms = math.floor(stats.startuptime) .. " ms"
+					return "  Loaded "
+						.. stats.loaded
+						.. "/"
+						.. stats.count
+						.. " plugins in "
+						.. ms
+				end,
+				hl = "NvDashFooter",
+				no_gap = true,
+			},
 
-  -- nvchad dashboard
-  nvdash = {
-    load_on_startup = true,
-    -- header = {
-    --   "                            ",
-    --   "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
-    --   "   ▄▀███▄     ▄██ █████▀    ",
-    --   "   ██▄▀███▄   ███           ",
-    --   "   ███  ▀███▄ ███           ",
-    --   "   ███    ▀██ ███           ",
-    --   "   ███      ▀ ███           ",
-    --   "   ▀██ █████▄▀█▀▄██████▄    ",
-    --   "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
-    --   "                            ",
-    --   "     Powered By  eovim    ",
-    --   "                            ",
-    -- },
-    -- header = {
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⡤⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡾⠉⠀⠀⠀⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⣀⠀⠀⠀⠀⠀⠀⣀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⠁⠀⠛⠀⠀⠀⠀⠀⠀⠛⠀⠀⢸⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣻⣋⠀⠿⠿⠿⠀⠀⠀⠀⠿⠿⠿⠀⢘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣟⠀⠀⣿⠀⠀⠀⠀⠀⠀⣿⠀⠀⢘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣷⣿⣗⠀⠀⣿⠀⠀⠀⠀⠀⠀⣿⠀⠀⢘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣺⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⣷⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⡿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡺⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣯⣿⡄⠀⠘⠻⠿⠿⠿⠃⠀⣐⣟⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣷⣿⡿⡿⣿⣽⣟⢷⣄⣀⣀⣀⣀⣠⣾⢿⣿⣟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⡿⣻⣿⡿⣿⣯⡯⣿⣿⣶⣷⣾⣾⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣷⣿⣼⣿⣟⣿⣧⣿⣿⣿⣿⣿⣿⣷⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡟⣿⣿⡾⣿⣷⣿⣛⣻⣷⡟⡯⣷⣮⣟⣿⣽⢿⣻⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣯⣟⣟⣛⣞⡻⣿⣿⠽⡼⢟⡷⡗⣿⡎⠿⡿⣽⣏⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣽⡡⡧⢅⢟⢇⡏⢭⠳⡃⣙⢇⣮⡗⡗⡏⠿⣗⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣯⡏⠝⣡⣋⠠⠨⣇⡯⠱⡙⠁⣍⢬⡺⡏⡕⣧⠉⡬⣽⣿⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣃⡂⠃⠘⠀⡏⠡⣎⡁⠂⠀⢼⠄⠂⠀⠃⠛⡁⠉⠁⡿⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠉⠀⠀⠀⠀⠀⠈⠑⡇⠀⠀⠘⠀⠃⠀⠁⣛⠃⠀⠀⠧⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠀⠀⠀⠹⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    --   "⠀⠀⠀⠀⠀⠀⠀⠀                            ",
-    --   "     𝓬𝓱𝓲𝓷𝓰  𝒗𝒊𝒎    ",
-    --   "                            ",
-    -- },
-    header = {
-     "⠀⠀⠀⠀     ⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⢀⡼⠛⣙⠛⠳⢦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀⠀  ⠀  ⠀⠀   ⠀⠀⢀⣀⣀⣰⠋⣰⣿⠿⠿⢷⣦⡈⢻⡀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀    ⠀⠀⠀   ⠀⠀⢀⡎⢠⣦⠀⣴⣿⠃⠀⣶⣦⣤⣁⠀⣇⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀    ⠀⠀ ⠀  ⠀⢀⡾⢀⣿⠃⢰⣿⣿⠀⠀⠙⠿⠿⣿⡧⢸⡇⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀    ⠀⠀ ⠀  ⠀⣼⠀⣼⡏⢀⣿⣿⣿⣷⣤⣀⣀⡀⠀⢀⡼⠃⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀    ⠀⠀ ⠀  ⠀⢿⠐⠿⠀⣼⣿⣿⣿⣿⣿⣿⣿⡿⠀⡾⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀⠀    ⠀ ⠀  ⠀⢈⡷⠀⣶⣿⣿⠛⠿⣿⣿⣿⣿⠃⣸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀⠀    ⠀ ⠀  ⠀⢸⡅⠸⢿⡿⢃⡄⢠⣤⣬⡿⢃⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀    ⠀⠀   ⠀⠀⠀⠉⠳⠤⠴⢿⣄⠻⠿⢋⣠⠏⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⠶⠋⠀⠀⠀⠀⠀⠀⠀⠀",
-      "                            ",
-      "     𝓬𝓱𝓲𝓷𝓰  𝒗𝒊𝒎    ",
-      "                            ",
-    },
+			{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
+		},
+	},
 
-    buttons = {
-      { txt = "  Find File", keys = "f", cmd = "Telescope find_files" },
-      { txt = "  Recent Files", keys = "r", cmd = "Telescope oldfiles" },
-      { txt = "󰈭  Find Word", keys = "g", cmd = "Telescope live_grep" },
-      { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
-      { txt = "  Mappings", keys = "c", cmd = "NvCheatsheet" },
+	-- terminal
+	term = {
+		base46_colors = true,
+		winopts = { number = false, relativenumber = false },
+		sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
+		float = {
+			relative = "editor",
+			row = 0.3,
+			col = 0.25,
+			width = 0.5,
+			height = 0.4,
+			border = "single",
+		},
+	},
 
-      { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
+	
 
-      {
-        txt = function()
-          local stats = require("lazy").stats()
-          local ms = math.floor(stats.startuptime) .. " ms"
-          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
-        end,
-        hl = "NvDashFooter",
-        no_gap = true,
-      },
+	cheatsheet = {
+		theme = "grid", -- simple/grid
+		excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+	},
 
-      { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
-    },
-  },
+	mason = { pkgs = {}, skip = {} },
 
-  -- terminal
-  term = {
-    base46_colors = true,
-    winopts = { number = false, relativenumber = false },
-    sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
-    float = {
-      relative = "editor",
-      row = 0.3,
-      col = 0.25,
-      width = 0.5,
-      height = 0.4,
-      border = "single",
-    },
-  },
-
-  lsp = { signature = true },
-
-  cheatsheet = {
-    theme = "grid", -- simple/grid
-    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
-  },
-
-  mason = { pkgs = {}, skip = {} },
-
-  colorify = {
-    enabled = true,
-    mode = "virtual", -- fg, bg, virtual
-    virt_text = "󱓻 ",
-    highlight = { hex = true, lspvars = true },
-  },
+	colorify = {
+		enabled = true,
+		mode = "virtual", -- fg, bg, virtual
+		virt_text = "󱓻 ",
+		highlight = { hex = true, lspvars = true },
+	},
 }
 
 -- M.nvdash = { load_on_startup = true }
@@ -194,7 +224,6 @@ local options = {
 --          lazyload = false
 --      }
 -- }
-
 
 local status, chadrc = pcall(require, "chadrc")
 return vim.tbl_deep_extend("force", options, status and chadrc or {})
